@@ -1,12 +1,10 @@
 const { puppeteer, chromeOptions, axios, apiHost, queryLimit } = require('./config');
 const { userAgents } = require('./agents');
-const { keywords } = require('./keywords');
+const { keywords } = require('./cities');
 const { wait, formatKeyword } = require('./functions');
 const { scrollPage } = require('./scroll');
 const processEndpoint = `${apiHost}/api/business/process-search-results`;
 const fs = require('fs');
-
-let pageData = results = null;
 
 async function start() {
     const browser = await puppeteer.launch(chromeOptions);
@@ -199,6 +197,8 @@ async function start() {
                 if (results.length > 0) {
                     fs.writeFileSync('data/results.json', JSON.stringify(payload, null, 2));
                 }
+                
+                process.exit();
 
                 await axios.post(processEndpoint, payload)
                     .then(response => console.log('API response:', response.status, response.data))
