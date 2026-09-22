@@ -1,4 +1,4 @@
-const { puppeteer, chromeOptions, axios, apiHost, queryLimit } = require('./config');
+const { puppeteer, chromeOptions, axios, apiHost } = require('./config');
 const { userAgents } = require('./agents');
 const { keywords } = require('./keywords');
 const { wait, formatKeyword } = require('./functions');

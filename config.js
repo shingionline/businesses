@@ -15,8 +15,6 @@ puppeteer
 
 const useProxy    = false;
 const useHeadless = false;
-const queryLimit  = 5000;
-// const queryLimit  = 1;
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
@@ -47,4 +45,4 @@ const chromeOptions = {
 };
 */
 
-module.exports = { puppeteer, username, password, chromeOptions, apiHost, axios, useProxy, queryLimit, userAgents };
+module.exports = { puppeteer, username, password, chromeOptions, apiHost, axios, useProxy, userAgents };

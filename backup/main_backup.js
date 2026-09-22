@@ -1,4 +1,4 @@
-const { puppeteer, username, password, chromeOptions, apiHost, axios, useProxy, queryLimit, userAgents } = require('./config');
+const { puppeteer, username, password, chromeOptions, apiHost, axios, useProxy, userAgents } = require('./config');
 const { wait, extractNumber} = require('./functions');
 const { getReviewData } = require('./reviews');
 const { updateViews } = require('./update');
@@ -10,7 +10,7 @@ const endpoint = `${apiHost}/reviews/process`;
 
 async function start() {
     // get dbData
-    await axios.post(endpoint, { limit: queryLimit })
+    await axios.post(endpoint, { limit: 10 })
         .then(function (response) {
             dbData = response.data;
         }).catch(function (error) {
