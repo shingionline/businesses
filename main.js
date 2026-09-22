@@ -6,6 +6,11 @@ const { scrollPage } = require('./scroll');
 const processEndpoint = `${apiHost}/api/business/process-search-results`;
 const fs = require('fs');
 
+fs.writeFileSync('data/data-keywords.json', JSON.stringify(keywords, null, 2));
+console.log(keywords)
+
+process.exit();
+
 async function start() {
     const browser = await puppeteer.launch(chromeOptions);
     console.log(`Browser agents loaded: ${userAgents.length}`);

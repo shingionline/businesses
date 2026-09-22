@@ -1,4 +1,4 @@
-const LIMIT = 5;
+const LIMIT = 20;
 
 function shuffleArray(array) {
     const arr = [...array];
