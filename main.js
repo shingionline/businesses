@@ -6,8 +6,29 @@ const { scrollPage } = require('./scroll');
 const processEndpoint = `${apiHost}/api/business/process-search-results`;
 const fs = require('fs');
 
-fs.writeFileSync('data/data-keywords.json', JSON.stringify(keywords, null, 2));
-console.log(keywords)
+// fs.writeFileSync('data/data-keywords.json', JSON.stringify(keywords, null, 2));
+// console.log(keywords)
+
+const links = keywords.map(({ keyword }) => {
+    const url = `https://www.google.com/search?q=${encodeURIComponent(keyword)}`;
+
+    return `<div><a href="${url}" target="_blank">${keyword}</a></div>`;
+}).join('\n');
+
+const filename = 'links.html'
+
+fs.writeFileSync('data/' + filename, `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Google Searches</title>
+</head>
+<body>
+${links}
+</body>
+</html>`);
+
+console.log(`Created data/${filename} with ${keywords.length} links.`);
 
 process.exit();
 
